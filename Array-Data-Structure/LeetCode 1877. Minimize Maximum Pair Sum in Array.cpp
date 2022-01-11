@@ -1,3 +1,6 @@
+
+// To minimize max pair sum we need to sort the array  and pair the highest element with
+// the lowest element
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
