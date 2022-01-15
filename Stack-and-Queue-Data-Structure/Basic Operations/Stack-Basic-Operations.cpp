@@ -30,6 +30,9 @@ int main()
     }
 
 
+    //printing the size of stack
+    cout<<"the size of stack is:"<<myStack.size()<<endl;
+
     //printing the element of the stack
     while (!myStack.empty())
     {
