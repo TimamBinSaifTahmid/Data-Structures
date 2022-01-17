@@ -1,24 +1,35 @@
-class Solution {
+class Solution
+{
 public:
-    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+    int countStudents(vector<int>& students, vector<int>& sandwiches)
+    {
         queue<int>studentQueue,sandwichesQueue;
-        for(int i=0;i<students.size();i++){
+        int studentZero=0,studentOne=0;
+        for(int i=0; i<students.size(); i++)
+        {
             studentQueue.push(students[i]);
+            if(students[i]==0)
+                studentZero++;
+            else if(students[i]==1)
+                studentOne++;
             sandwichesQueue.push(sandwiches[i]);
         }
+        cout<<studentZero<<" "<<studentOne<<" ";
         int temp=0,size=students.size();
-        for(int i=0;i<size*size;i++){
-            if(studentQueue.front()==sandwichesQueue.front()&&studentQueue.size()!=0){
-                studentQueue.pop();
+        for(int i=0; i<size; i++)
+        {
+            if(sandwichesQueue.front()==0&&studentZero!=0)
+            {
                 sandwichesQueue.pop();
+                studentZero--;
             }
-            else if(studentQueue.front()!=sandwichesQueue.front()&&studentQueue.size()!=0) {
-                temp=studentQueue.front();
-                studentQueue.pop();
-                studentQueue.push(temp);
+            else if(sandwichesQueue.front()==1&&studentOne!=0)
+            {
+                sandwichesQueue.pop();
+                studentOne--;
             }
 
         }
-        return studentQueue.size();
+        return sandwichesQueue.size();
     }
 };
